@@ -9,6 +9,7 @@
     pkgs = import nixpkgs { inherit system; };
 
     pythonEnv = (pkgs.poetry2nix.mkPoetryEnv {
+      python = pkgs.python39;
       projectDir = ./.;
     });
     linters.doc = pkgs.writers.writeBashBin "lint-docs" ''
@@ -51,6 +52,8 @@
       overrides = import ./overrides.nix { inherit pkgs; };
 
     in pkgs.poetry2nix.mkPoetryApplication {
+      python = pkgs.python39;
+
       projectDir = ./.;
 
       propagatedBuildInputs = [

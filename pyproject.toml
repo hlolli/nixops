@@ -1,33 +1,37 @@
 [tool.poetry]
 name = "nixops"
-version = "2.0.0"
+version = "2.0.1"
 description = "NixOS cloud provisioning and deployment tool"
 authors = ["Eelco Dolstra <eelco.dolstra@logicblox.com>"]
 license = "LGPL-3.0-only"
 include = ["nix/*.nix", "nixops/py.typed" ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-PrettyTable = "^0.7.2"
+python = "^3.9"
+PrettyTable = "^2.1.0"
 pluggy = "^0.13.1"
-typeguard = "^2.7.1"
+typeguard = "^2.12.0"
 typing-extensions = "^3.7.4"
 
 [tool.poetry.dev-dependencies]
 nose = "^1.3.7"
-mypy = "^0.770"
+mypy = "^0.812"
 black = "^19.10b0"
 # For mypy txt report
-lxml = "^4.5.0"
+# lxml = "^4.6.3"
 
 # docs
-livereload = "^2.6.1"
-sphinx = "^3.0.3"
-flake8 = "^3.8.1"
+livereload = "^2.6.3"
+# sphinx = "^4.0.2"
+flake8 = "^3.9.2"
 
 [tool.poetry.scripts]
 nixops = 'nixops.__main__:main'
 charon = 'nixops.__main__:main'
+
+# [[tool.poetry.source]]
+# name = "markupsafe"
+# url = "https://files.pythonhosted.org/packages/bf/10/ff66fea6d1788c458663a84d88787bae15d45daa16f6b3ef33322a51fc7e/"
 
 [build-system]
 requires = ["poetry>=0.12"]
