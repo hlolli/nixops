@@ -1,11 +1,13 @@
 {
   description = "NixOps: a tool for deploying to [NixOS](https://nixos.org) machines in a network or the cloud";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
+    utils.url = "github:numtide/flake-utils";
+  };
 
-  inputs.utils.url = "github:numtide/flake-utils";
-
-  outputs = { self, nixpkgs, utils }: utils.lib.eachDefaultSystem (system: let
+  outputs = { self, nixpkgs, flake-compat, utils }: utils.lib.eachDefaultSystem (system: let
     pkgs = import nixpkgs { inherit system; };
 
     pythonEnv = (pkgs.poetry2nix.mkPoetryEnv {
